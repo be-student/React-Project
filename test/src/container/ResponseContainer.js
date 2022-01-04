@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import React from "react";
-import ResponseCheck from "../ResponseCheck";
+import ResponseCheck from "../pages/ResponseCheck";
 import { setState, setMessage, setResult } from "../module/responseReducer";
 const ResponseContainer = ({
   state,

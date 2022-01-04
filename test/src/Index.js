@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import ResponseCheck from "./ResponseCheck";
-import Home from "./Home.jsx";
+// import ResponseCheck from "./pages/ResponseCheck";
+import Home from "./pages/Home.jsx";
 import Header from "./component/header.jsx";
 import ResponseContainer from "./container/ResponseContainer";
-import Result from "./Result";
+import Result from "./pages/Result";
 const Index = () => {
   const [state, setState] = useState("waiting");
   const [message, setMessage] = useState("클릭해서 시작");
