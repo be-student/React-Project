@@ -18,7 +18,7 @@ const Index = () => {
           <Route path="/" element={<Home />} />
           <Route path="/start" element={<ResponseContainer />} />
           {/* <Route path="/result" element={<Result result={result} />} /> */}
-          <Route path="/result" element={<Result result={result} />} />
+          <Route path="/result" element={<Result />} />
         </Routes>
       </BrowserRouter>
     </div>
