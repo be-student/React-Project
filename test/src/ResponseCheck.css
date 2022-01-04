@@ -1,0 +1,14 @@
+.game__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+#screen.end {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game__container .button {
+  background-color: tomato;
+}
