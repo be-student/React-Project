@@ -70,7 +70,7 @@ const responseReducer = handleActions(
     [SET_MESSAGE]: (state, { payload: text }) => ({ ...state, message: text }),
     [SET_RESULT]: (state, { payload: time }) => ({
       ...state,
-      result: state.result.concat(time),
+      result: [...state.result, time],
     }),
   },
   initialState
