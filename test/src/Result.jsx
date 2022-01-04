@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Result.css";
-const Result = ({ result }) => {
+const Result = () => {
+  const result = useSelector((state) => state.responseReducer.result);
   return (
     <div className="result__container">
       <div>
