@@ -54,6 +54,7 @@ const ResponseCheck = ({
   };
   const onClickScreen = () => {
     if (state === "waiting") {
+      console.log("123");
       setState("ready");
       setMessage("초록색이 되면 클릭하세요");
       timeout.current = setTimeout(() => {
@@ -61,6 +62,7 @@ const ResponseCheck = ({
         setMessage("지금 클릭");
         startTime.current = new Date();
       }, Math.floor(Math.random() * 1000) + 2000);
+      console.log("123");
     } else if (state === "ready") {
       //성급하게 클릭
       setState("waiting");
@@ -71,7 +73,8 @@ const ResponseCheck = ({
       let endTime = new Date();
 
       //setResult([...result, endTime - startTime.current]);
-      setResult((prevResult) => [...prevResult, endTime - startTime.current]);
+      //setResult((prevResult) => [...prevResult, endTime - startTime.current]);
+      setResult(endTime - startTime.current);
       if (result.length !== 4) {
         setState("waiting");
         setMessage("클릭해서 시작하세요");
