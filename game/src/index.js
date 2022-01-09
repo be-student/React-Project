@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-
+import rootReducer from "./container/index";
 const store = createStore(rootReducer, composeWithDevTools());
 ReactDOM.render(
   <React.StrictMode>

@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+// import ResponseCheck from "./pages/ResponseCheck";
+import Home from "./pages/Home.jsx";
+import Header from "./component/header.jsx";
+import ResponseContainer from "./container/ResponseContainer";
+import Result from "./pages/Result";
+import RSP from "./pages/RSPHOOKS";
+const App = () => {
+  const [state, setState] = useState("waiting");
+  const [message, setMessage] = useState("클릭해서 시작");
+  const [result, setResult] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Header></Header>
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<RSP />} />
+          <Route path="/start" element={<ResponseContainer />} />
+          {/* <Route path="/result" element={<Result result={result} />} /> */}
+          <Route path="/result" element={<Result />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-}
-
+};
 export default App;
