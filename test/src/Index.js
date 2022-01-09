@@ -6,6 +6,7 @@ import Home from "./pages/Home.jsx";
 import Header from "./component/header.jsx";
 import ResponseContainer from "./container/ResponseContainer";
 import Result from "./pages/Result";
+import RSP from "./pages/RSPHOOKS";
 const Index = () => {
   const [state, setState] = useState("waiting");
   const [message, setMessage] = useState("클릭해서 시작");
@@ -15,7 +16,8 @@ const Index = () => {
       <BrowserRouter>
         <Header></Header>
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<RSP />} />
           <Route path="/start" element={<ResponseContainer />} />
           {/* <Route path="/result" element={<Result result={result} />} /> */}
           <Route path="/result" element={<Result />} />
