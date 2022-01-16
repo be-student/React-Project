@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 // import ResponseCheck from "./pages/ResponseCheck";
-import Home from "./pages/Home.jsx";
+import Home from "./pages/home/Home.jsx";
 import Header from "./component/header.jsx";
 import ResponseContainer from "./container/ResponseContainer";
-import Result from "./pages/Result";
+import Result from "./pages/responseCheck/Result";
 import RSP from "./pages/RSPHOOKS";
 const App = () => {
   const [state, setState] = useState("waiting");
@@ -17,8 +17,8 @@ const App = () => {
         <Header></Header>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<RSP />} />
-          <Route path="/start" element={<ResponseContainer />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/ResponseCheck" element={<ResponseContainer />} />
           {/* <Route path="/result" element={<Result result={result} />} /> */}
           <Route path="/result" element={<Result />} />
         </Routes>
