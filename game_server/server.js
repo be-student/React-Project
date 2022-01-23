@@ -1,12 +1,12 @@
-process.env.NODE_ENV =
-  process.env.NODE_ENV &&
-  process.env.NODE_ENV.trim().toLowerCase() == "production"
-    ? "production"
-    : "development";
-
 import express from "express";
 import path from "path";
-import http from "http";
+import cookieParser from "cookie-parser";
+import morgan from "morgan";
+import path from "path";
+import dotenv from "dotenv";
+import passport from "passport";
+//import passportConfig from "passport";
+dotenv.config();
 
 const __dirname = path.resolve();
 

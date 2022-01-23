@@ -45,3 +45,12 @@
     width: 1080px;
   }
 } */
+.Homeitem__Link {
+  display: block;
+}
+a {
+  display: block;
+}
+Link {
+  display: block;
+}

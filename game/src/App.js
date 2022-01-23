@@ -6,7 +6,8 @@ import Home from "./pages/home/Home.jsx";
 import Header from "./component/header.jsx";
 import ResponseContainer from "./container/ResponseContainer";
 import Result from "./pages/responseCheck/Result";
-import RSP from "./pages/RSPHOOKS";
+import RSP from "./pages/RSP/RSPHOOKS";
+import Lotto from "./pages/Lotto/LottoClass.jsx";
 const App = () => {
   const [state, setState] = useState("waiting");
   const [message, setMessage] = useState("클릭해서 시작");
@@ -21,6 +22,8 @@ const App = () => {
           <Route path="/ResponseCheck" element={<ResponseContainer />} />
           {/* <Route path="/result" element={<Result result={result} />} /> */}
           <Route path="/result" element={<Result />} />
+          <Route path="/RSP" element={<RSP />} />
+          <Route path="Lotto" element={<Lotto />} />
         </Routes>
       </BrowserRouter>
     </div>
