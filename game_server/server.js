@@ -42,6 +42,13 @@ app.get("/", (req, res) => {
   console.log(1);
   res.sendFile(path.join(__dirname + "/build"));
 });
+
+app.use((err, req, res, next) => {
+  res.locals.message = err.message;
+  res.locals.error = process.env.NODE !== "production" ? err : {};
+  res.status(err.status || 500);
+  res.sendFile("error");
+});
 app.listen(app.get("port"), () => {
   console.log(app.get("port"), "번 포트에서 대기중");
 });
