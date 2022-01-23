@@ -48,3 +48,6 @@ a {
   text-decoration: none;
   color: black;
 }
+.header__login {
+  color: white;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./header1.css";
+import "./header.css";
 import { faPencilRuler } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -25,6 +25,9 @@ const Header = () => {
       >
         테스트 버튼
       </div>
+      <Link to="/Login" className="header__login">
+        로그인
+      </Link>
       <Link to="/" className="header__yellow header__btn">
         <div>홈 화면으로</div>
       </Link>
