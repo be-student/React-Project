@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
-import path from "path";
+
 import dotenv from "dotenv";
 import passport from "passport";
 import session from "express-session";
@@ -38,10 +38,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/", express.static(path.join(__dirname, "/build")));
-app.get("/", (req, res) => {
-  console.log(1);
-  res.sendFile(path.join(__dirname + "/build"));
-});
+app.use("/", express.static(path.join(__dirname, "/build/static")));
+// app.get("/", (req, res) => {
+//   console.log(1);
+//   res.sendFile(path.join(__dirname, "/build", "index.html"));
+// });
 
 app.use((err, req, res, next) => {
   res.locals.message = err.message;

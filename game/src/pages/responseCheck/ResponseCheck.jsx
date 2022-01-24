@@ -8,11 +8,12 @@ const ResponseCheck = ({
   setMessage,
   result,
   setResult,
+  clearResult,
 }) => {
   let startTime = useRef(0);
   let timeout = useRef();
   const onReset = () => {
-    setResult([]);
+    clearResult([]);
   };
   const getSum = () => {
     //console.log(result);

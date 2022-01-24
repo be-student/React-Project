@@ -4,6 +4,7 @@ import { createAction, handleActions } from "redux-actions";
 const SET_STATE = "response/SET_STATE";
 const SET_MESSAGE = "response/SET_MESSAGE";
 const SET_RESULT = "response/SET_RESULT";
+const CLEAR_RESULT = "response/CLEAR_RESULT";
 
 // export const sample_act = () => ({
 //   type: SAMPLE_ACTION,
@@ -13,7 +14,7 @@ export const setState = createAction(SET_STATE, (text) => text);
 //   type: SET_STATE,
 //   text,
 // });
-
+export const clearResult = createAction(CLEAR_RESULT, () => {});
 export const setMessage = createAction(SET_MESSAGE, (text) => text);
 // export const setMessage = (text) => ({
 //   type: SET_MESSAGE,
@@ -69,6 +70,10 @@ const responseReducer = handleActions(
     [SET_RESULT]: (state, { payload: time }) => ({
       ...state,
       result: [...state.result, time],
+    }),
+    [CLEAR_RESULT]: (state) => ({
+      ...state,
+      result: [],
     }),
   },
   initialState

@@ -1,7 +1,12 @@
 import { connect } from "react-redux";
 import React from "react";
 import ResponseCheck from "../pages/responseCheck/ResponseCheck";
-import { setState, setMessage, setResult } from "../module/responseReducer";
+import {
+  setState,
+  setMessage,
+  setResult,
+  clearResult,
+} from "../module/responseReducer";
 const ResponseContainer = ({
   state,
   setState,
@@ -9,6 +14,7 @@ const ResponseContainer = ({
   setMessage,
   result,
   setResult,
+  clearResult,
 }) => {
   return (
     <ResponseCheck
@@ -18,6 +24,7 @@ const ResponseContainer = ({
       setMessage={setMessage}
       result={result}
       setResult={setResult}
+      clearResult={clearResult}
     />
   );
 };
@@ -41,6 +48,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setResult: (time) => {
     dispatch(setResult(time));
+  },
+  clearResult: () => {
+    dispatch(clearResult());
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ResponseContainer);
