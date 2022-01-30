@@ -24,3 +24,4 @@ v 1.0.0 React에 props로 모든 데이터 전달 2022-0101
 v 1.0.1 React-Redux를 사용해 모든 데이터를 이동(MVC 디자인 패턴 적용) 2022-0103  
 v 1.0.2 createAction,handleActions 를 사용해 모든 데이터를 이동 2022-0104
 v 1.1.0 reactRouter를 이용해 라우터를 이용해 single page application 을 실제로 구현함.
+v 1.1.1 로그인 기능을 axios와 redux를 이용해 어느정도 구현해둠. token방식
