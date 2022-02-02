@@ -11,7 +11,6 @@ import Lotto from "./pages/Lotto/LottoClass.jsx";
 import Login from "./pages/home/Login.jsx";
 import socketIOClient from "socket.io-client";
 
-let socket;
 const App = () => {
   const ENDPOINT = "http://127.0.0.1:8001";
   useEffect(() => {

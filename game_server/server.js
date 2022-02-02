@@ -37,6 +37,12 @@ const getApiAndEmit = (socket) => {
   socket.emit("FromAPI", response);
 };
 //const io =
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 app.set("port", process.env.PORT || 8001);
 // sequelize.sync({force})
 app.use(morgan("dev"));
