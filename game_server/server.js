@@ -10,11 +10,33 @@ import session from "express-session";
 //const {sequelize}
 //import passportConfig from "passport";
 dotenv.config();
+import { createServer } from "http";
+import { Server } from "socket.io";
+import cors from "cors";
 
 const __dirname = path.resolve();
-
 const app = express();
 
+const httpServer = createServer(app);
+const io = new Server(httpServer, { cors: { origin: "*" } });
+
+io.on("connection", (socket) => {
+  console.log("Connection established");
+  setInterval(() => {
+    socket.emit("msg", "1111");
+  }, 1000);
+
+  getApiAndEmit(socket);
+  socket.on("disconnect", () => {
+    console.log("Disconnected");
+  });
+});
+
+const getApiAndEmit = (socket) => {
+  const response = "response you need";
+  socket.emit("FromAPI", response);
+};
+//const io =
 app.set("port", process.env.PORT || 8001);
 // sequelize.sync({force})
 app.use(morgan("dev"));
@@ -51,8 +73,11 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.sendFile("error");
 });
-const server = app.listen(app.get("port"), () => {
-  console.log(app.get("port"), "번 포트에서 대기중");
-});
+// app.listen(app.get("port"), () => {
+//   console.log(app.get("port"), "번 포트에서 대기중");
+// });
 
-webSocket(server, app, sessionMiddleware);
+httpServer.listen(app.get("port"), function () {
+  var port = httpServer.address().port;
+  console.log("Running on : ", port);
+});
