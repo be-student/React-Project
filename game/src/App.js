@@ -10,14 +10,17 @@ import RSP from "./pages/RSP/RSPHOOKS";
 import Lotto from "./pages/Lotto/LottoClass.jsx";
 import Login from "./pages/home/Login.jsx";
 import socketIOClient from "socket.io-client";
+import HIDE from "./component/toLogin.jsx";
 
 const App = () => {
   const ENDPOINT = "http://127.0.0.1:8001";
+  const [logged, setLogged] = useState(false);
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
     socket.on("msg", (data) => {
       console.log(data);
     });
+    return socket.disconnect();
   }, []);
   return (
     <div>
@@ -33,6 +36,7 @@ const App = () => {
           <Route path="Lotto" element={<Lotto />} />
           <Route path="/Login" element={<Login />} />
         </Routes>
+        {logged === false ? <HIDE /> : null}
       </BrowserRouter>
     </div>
   );
