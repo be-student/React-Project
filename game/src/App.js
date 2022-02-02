@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 // import ResponseCheck from "./pages/ResponseCheck";
@@ -9,10 +9,18 @@ import Result from "./pages/responseCheck/Result";
 import RSP from "./pages/RSP/RSPHOOKS";
 import Lotto from "./pages/Lotto/LottoClass.jsx";
 import Login from "./pages/home/Login.jsx";
+import io from "socket.io-client";
+
+let socket;
 const App = () => {
-  const [state, setState] = useState("waiting");
-  const [message, setMessage] = useState("클릭해서 시작");
-  const [result, setResult] = useState([]);
+  useEffect(() => {
+    console.log("1234");
+    socket = io.connect("http://localhost:8001", {
+      path: "/socket.io",
+      transports: ["websocket"],
+    });
+    return () => socket.disconnect();
+  }, []);
   return (
     <div>
       <BrowserRouter>
