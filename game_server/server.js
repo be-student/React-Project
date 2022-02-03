@@ -13,7 +13,16 @@ dotenv.config();
 import { createServer } from "http";
 import { Server } from "socket.io";
 import cors from "cors";
+import sequelize from "sequelize";
 
+sequelize
+  .sync({ force: false })
+  .then(() => {
+    console.log("db 연결 성공");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 const __dirname = path.resolve();
 const app = express();
 
@@ -51,7 +60,7 @@ app.use("/img", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-
+app.use("/login");
 const sessionMiddleware = session({
   resave: false,
   saveUninitialized: false,
