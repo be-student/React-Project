@@ -13,8 +13,9 @@ dotenv.config();
 import { createServer } from "http";
 import { Server } from "socket.io";
 import cors from "cors";
-import sequelize from "sequelize";
+import passportConfig from "./passport";
 
+passportConfig();
 sequelize
   .sync({ force: false })
   .then(() => {
@@ -60,7 +61,7 @@ app.use("/img", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use("/login");
+app.use("/auth");
 const sessionMiddleware = session({
   resave: false,
   saveUninitialized: false,

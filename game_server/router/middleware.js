@@ -1,3 +1,5 @@
+import jwt from "jsonwebtoken";
+
 export const isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
     next();
@@ -12,3 +14,8 @@ export const isNotLoggedIn = (req, res, next) => {
     res.status(403).send("이미 로그인 되었습니다.");
   }
 };
+export const verifyToken=(req,res,next)=>{
+  try{
+    req.decoded=jwt.verify(req.headers.authorization,process.env.JWT_SECRET);
+  }
+}
