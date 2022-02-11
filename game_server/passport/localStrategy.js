@@ -1,11 +1,11 @@
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcrypt");
+import { use } from "passport";
+import { Strategy as LocalStrategy } from "passport-local";
+import { compare } from "bcrypt";
 
-const User = require("../models/user");
+import { findOne } from "../models/user";
 
-module.exports = () => {
-  passport.use(
+export default () => {
+  use(
     new LocalStrategy(
       {
         usernameField: "email", //front 에서 보낸 req.body.email을 참조하라는 의미.
@@ -13,9 +13,9 @@ module.exports = () => {
       },
       async (email, password, done) => {
         try {
-          const exUser = await User.findOne({ where: { email } });
+          const exUser = await findOne({ where: { email } });
           if (exUser) {
-            const result = await bcrypt.compare(password, exUser.password);
+            const result = await compare(password, exUser.password);
             if (result) {
               done(null, exUser);
             } else {
